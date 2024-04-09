@@ -1,7 +1,5 @@
 package org.example.account;
 
-import org.example.account.Account;
-
 import javax.naming.InsufficientResourcesException;
 
 public class CheckingAccount extends Account {
