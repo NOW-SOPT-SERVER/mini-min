@@ -16,7 +16,7 @@ public class BankController {
 
     public void start() {
         while (true) {
-            System.out.println("\n===== 은행 시스템 메뉴 =====");
+            System.out.println("\n===== 안녕하세요 민재은행입니다. 어떤 업무를 도와드릴까요? =====");
             System.out.println("1. 입금하기");
             System.out.println("2. 출금하기");
             System.out.println("3. 잔액 확인하기");
@@ -59,8 +59,12 @@ public class BankController {
     private void withdraw() {
         System.out.print("출금할 금액을 입력해주세요: ");
         int amount = Integer.parseInt(scanner.nextLine());
+
+        System.out.print("계좌 비밀번호 네자리를 입력해주세요: ");
+        String password = scanner.nextLine();
+
         try {
-            accountService.withdraw(amount);
+            accountService.withdraw(amount, password);
         } catch (InsufficientResourcesException error) {
             System.out.println(error.getMessage());
         }

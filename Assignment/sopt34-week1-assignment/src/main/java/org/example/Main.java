@@ -8,7 +8,7 @@ import org.example.controller.BankController;
 
 public class Main {
     public static void main(String[] args) {
-        Account account = new CheckingAccount(1000); // 초기 잔액 설정
+        Account account = new CheckingAccount(1000, "0000"); // 초기 잔액 설정
         AccountService accountService = new CheckingAccountService(account);
         BankController bankOperation = new BankController(accountService);
 
