@@ -9,7 +9,8 @@ public class CheckingAccount extends Account {
 
     // 입금
     @Override
-    public void deposit(int amount) {
+    public void deposit(int amount) throws InsufficientResourcesException {
+        if (amount <= 0) { throw new InsufficientResourcesException(ErrorMessage.INVALID_INPUT_AMOUNT.getMessage()); }
         this.balance += amount;
     }
 
@@ -17,6 +18,7 @@ public class CheckingAccount extends Account {
     @Override
     public void withdraw(int amount) throws InsufficientResourcesException {
         if (amount > balance) { throw new InsufficientResourcesException(ErrorMessage.INSUFFICIENT_BALANCE.getMessage()); }
+        if (amount <= 0) { throw new InsufficientResourcesException(ErrorMessage.INVALID_INPUT_AMOUNT.getMessage()); }
         this.balance -= amount;
     }
 }

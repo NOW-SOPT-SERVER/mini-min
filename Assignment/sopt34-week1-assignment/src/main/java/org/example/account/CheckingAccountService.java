@@ -10,7 +10,7 @@ public class CheckingAccountService implements AccountService {
     }
 
     @Override
-    public void deposit(int amount) {
+    public void deposit(int amount) throws InsufficientResourcesException {
         account.deposit(amount);
         System.out.println(amount + "원이 입금되었습니다.");
     }

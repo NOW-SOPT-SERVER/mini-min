@@ -13,6 +13,6 @@ public abstract class Account {
         return this.balance;
     }
 
-    public abstract void deposit(int amount);
+    public abstract void deposit(int amount) throws InsufficientResourcesException;
     public abstract void withdraw(int amount) throws InsufficientResourcesException;
 }

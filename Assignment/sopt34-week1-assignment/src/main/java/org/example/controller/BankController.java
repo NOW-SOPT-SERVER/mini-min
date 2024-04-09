@@ -48,7 +48,11 @@ public class BankController {
     private void deposit() {
         System.out.print("입금할 금액을 입력해주세요: ");
         int amount = Integer.parseInt(scanner.nextLine());
-        accountService.deposit(amount);
+        try {
+            accountService.deposit(amount);
+        } catch (InsufficientResourcesException error) {
+            System.out.println(error.getMessage());
+        }
         displayBalance();
     }
 
@@ -57,8 +61,8 @@ public class BankController {
         int amount = Integer.parseInt(scanner.nextLine());
         try {
             accountService.withdraw(amount);
-        } catch (InsufficientResourcesException e) {
-            System.out.println("오류: " + e.getMessage());
+        } catch (InsufficientResourcesException error) {
+            System.out.println(error.getMessage());
         }
         displayBalance();
     }
