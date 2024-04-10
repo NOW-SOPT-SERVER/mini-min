@@ -3,9 +3,9 @@ package org.example.account;
 import javax.naming.InsufficientResourcesException;
 
 public class CheckingAccountService implements AccountService {
-    private final Account account;
+    private final CheckingAccount account;
 
-    public CheckingAccountService(Account account) {
+    public CheckingAccountService(CheckingAccount account) {
         this.account = account;
     }
 
@@ -19,6 +19,12 @@ public class CheckingAccountService implements AccountService {
     public void withdraw(int amount, String password) throws InsufficientResourcesException {
         account.withdraw(amount, password);
         System.out.println(amount + "원이 출금되었습니다.");
+    }
+
+    @Override
+    public void transfer(int amount, String accountNumber, String password) throws InsufficientResourcesException {
+        account.transfer(amount, accountNumber, password);
+        System.out.println(accountNumber + "계좌로 " + amount + "원을 송금했습니다.");
     }
 
     @Override

@@ -8,8 +8,8 @@ import org.example.bank.BankController;
 
 public class Main {
     public static void main(String[] args) {
-        Account account = new CheckingAccount("0000");
-        AccountService accountService = new CheckingAccountService(account);
+        CheckingAccount checkingAccount = new CheckingAccount("0000");
+        AccountService accountService = new CheckingAccountService(checkingAccount);
         BankController bankOperation = new BankController(accountService);
 
         bankOperation.start();

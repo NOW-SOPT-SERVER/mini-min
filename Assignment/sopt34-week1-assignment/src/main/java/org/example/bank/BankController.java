@@ -19,23 +19,27 @@ public class BankController {
             System.out.println("\n===== 안녕하세요 민재은행입니다. 어떤 업무를 도와드릴까요? =====");
             System.out.println("1. 입금하기");
             System.out.println("2. 출금하기");
-            System.out.println("3. 잔액 확인하기");
-            System.out.println("4. 종료하기");
+            System.out.println("3. 송금하기");
+            System.out.println("4. 잔액 확인하기");
+            System.out.println("5. 종료하기");
             System.out.print("원하는 작업의 번호를 입력해주세요: ");
 
             String action = scanner.nextLine();
 
             switch (action) {
                 case "1":
-                    deposit();
+                    depositAction();
                     break;
                 case "2":
-                    withdraw();
+                    withdrawAction();
                     break;
                 case "3":
-                    displayBalance();
+                    transferAction();
                     break;
                 case "4":
+                    displayBalance();
+                    break;
+                case "5":
                     System.exit(0);
                     break;
                 default:
@@ -45,7 +49,7 @@ public class BankController {
         }
     }
 
-    private void deposit() {
+    private void depositAction() {
         System.out.print("입금할 금액을 입력해주세요: ");
         int amount = Integer.parseInt(scanner.nextLine());
         try {
@@ -56,7 +60,7 @@ public class BankController {
         displayBalance();
     }
 
-    private void withdraw() {
+    private void withdrawAction() {
         System.out.print("출금할 금액을 입력해주세요: ");
         int amount = Integer.parseInt(scanner.nextLine());
 
@@ -65,6 +69,24 @@ public class BankController {
 
         try {
             accountService.withdraw(amount, password);
+        } catch (InsufficientResourcesException error) {
+            System.out.println(error.getMessage());
+        }
+        displayBalance();
+    }
+
+    private void transferAction() {
+        System.out.print("송금할 계좌번호 열자리를 입력해주세요: ");
+        String accountNumber = scanner.nextLine();
+
+        System.out.print("출금할 금액을 입력해주세요: ");
+        int amount = Integer.parseInt(scanner.nextLine());
+
+        System.out.print("계좌 비밀번호 네자리를 입력해주세요: ");
+        String password = scanner.nextLine();
+
+        try {
+            accountService.transfer(amount, accountNumber, password);
         } catch (InsufficientResourcesException error) {
             System.out.println(error.getMessage());
         }
