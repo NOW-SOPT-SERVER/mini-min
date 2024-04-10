@@ -7,9 +7,9 @@ public abstract class Account {
     protected String password;
     protected int tryPassword = 0;
 
-    public Account(int balance, String password) {
-        this.balance = balance;
+    public Account(String password) {
         this.password = password;
+        this.balance = 0;
     }
 
     public int getBalance() {

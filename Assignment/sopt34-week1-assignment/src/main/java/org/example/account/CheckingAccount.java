@@ -6,7 +6,7 @@ import javax.naming.InsufficientResourcesException;
 import java.util.Objects;
 
 public class CheckingAccount extends Account {
-    public CheckingAccount(int balance, String password) { super(balance, password); }
+    public CheckingAccount(String password) { super(password); }
 
     // 입금
     @Override
