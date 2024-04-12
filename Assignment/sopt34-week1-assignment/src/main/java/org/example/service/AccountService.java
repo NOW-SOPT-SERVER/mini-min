@@ -1,4 +1,6 @@
-package org.example.account;
+package org.example.service;
+
+import org.example.domain.Account;
 
 import javax.naming.InsufficientResourcesException;
 

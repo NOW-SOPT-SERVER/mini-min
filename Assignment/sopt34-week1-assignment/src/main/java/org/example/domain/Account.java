@@ -1,4 +1,4 @@
-package org.example.account;
+package org.example.domain;
 
 import javax.naming.InsufficientResourcesException;
 import java.util.Random;

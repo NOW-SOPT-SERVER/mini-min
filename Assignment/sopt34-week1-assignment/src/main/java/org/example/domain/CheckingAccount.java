@@ -1,4 +1,4 @@
-package org.example.account;
+package org.example.domain;
 
 import org.example.exception.ErrorMessage;
 
@@ -6,7 +6,7 @@ import javax.naming.InsufficientResourcesException;
 import java.util.Objects;
 
 public class CheckingAccount extends Account {
-    private final static int GROUND_AMOUNT = 0
+    private final static int GROUND_AMOUNT = 0;
     private final static int MAX_TRY_PASSWORD_ATTEMPTS = 5;
     private final static int ACCOUNT_NUMBER_LENGTH = 10;
 
@@ -15,7 +15,7 @@ public class CheckingAccount extends Account {
     // 입금
     @Override
     public void deposit(int amount) throws InsufficientResourcesException {
-        validateInputAmount(amount);
+        validateInputAmount(amount);    // 입력 금액 검증
         this.balance += amount;
     }
 

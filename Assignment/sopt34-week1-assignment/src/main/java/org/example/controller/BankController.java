@@ -1,6 +1,6 @@
-package org.example.bank;
+package org.example.controller;
 
-import org.example.account.AccountService;
+import org.example.service.AccountService;
 
 import javax.naming.InsufficientResourcesException;
 import java.util.Scanner;
