@@ -27,24 +27,12 @@ public class BankController {
             String action = scanner.nextLine();
 
             switch (action) {
-                case "1":
-                    depositAction();
-                    break;
-                case "2":
-                    withdrawAction();
-                    break;
-                case "3":
-                    transferAction();
-                    break;
-                case "4":
-                    displayBalance();
-                    break;
-                case "5":
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
-                    break;
+                case "1" -> depositAction();
+                case "2" ->  withdrawAction();
+                case "3" -> transferAction();
+                case "4" -> displayBalance();
+                case "5" -> System.exit(0);
+                default -> System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
             }
         }
     }
