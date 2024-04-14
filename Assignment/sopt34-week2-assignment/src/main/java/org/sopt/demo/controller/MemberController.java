@@ -36,6 +36,11 @@ public class MemberController {
         return ResponseEntity.ok(memberService.findMemberById(memberId));
     }
 
+    @GetMapping("/all")
+    public ResponseEntity findAllMembers() {
+        return ResponseEntity.ok(memberService.findAllMembers());
+    }
+
     @DeleteMapping("/{memberId}")
     public ResponseEntity deleteMemberById(
             @PathVariable Long memberId
