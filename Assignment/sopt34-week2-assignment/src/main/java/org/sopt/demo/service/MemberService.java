@@ -16,12 +16,12 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    @Transactional  // 변경사항을 DB에 반영해주기 위한 어노테이션
+    @Transactional
     public String createMember(
             MemberCreateDto memberCreateDto
     ) {
         Member member = Member.create(memberCreateDto.name(), memberCreateDto.part(), memberCreateDto.age());
-        memberRepository.save(member);      // memberRepository 내부에 save 메서드를 이용해 객체를 DB에 반영
+        memberRepository.save(member);
         return member.getId().toString();
     }
 

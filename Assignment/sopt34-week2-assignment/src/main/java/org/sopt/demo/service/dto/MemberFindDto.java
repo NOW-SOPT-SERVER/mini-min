@@ -8,7 +8,6 @@ public record MemberFindDto(
         Part part,
         int age
 ) {
-    // 정적 팩토리 메서드로 객체를 생성
     public static MemberFindDto of(
             Member member
     ) {
