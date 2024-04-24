@@ -24,11 +24,11 @@ public class ApiResponse<T> {
         return new ApiResponse<T>(successMessage.getStatus(), successMessage.getMessage(), data);
     }
 
-    public static ApiResponse error(ErrorMessage errorMessage) {
-        return new ApiResponse<>(errorMessage.getStatus(), errorMessage.getMessage());
+    public static ApiResponse error(int status, String message) {
+        return new ApiResponse<>(status, message);
     }
 
-    public static ApiResponse error(ErrorMessage errorMessage, String message) {
-        return new ApiResponse<>(errorMessage.getStatus(), message);
+    public static ApiResponse error(ErrorMessage errorMessage) {
+        return new ApiResponse<>(errorMessage.getStatus(), errorMessage.getMessage());
     }
 }

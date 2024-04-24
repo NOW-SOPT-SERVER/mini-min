@@ -1,5 +1,6 @@
 package org.sopt.demo.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.sopt.demo.common.dto.ApiResponse;
 import org.sopt.demo.controller.dto.request.BlogTitleUpdateRequest;
@@ -31,8 +32,9 @@ public class BlogController {
     @PatchMapping("/blog/{blogId}/title")
     public ResponseEntity<ApiResponse> updateBlogTitle(
             @PathVariable Long blogId,
-            @RequestBody BlogTitleUpdateRequest blogTitleUpdateRequest
+            @Valid @RequestBody BlogTitleUpdateRequest blogTitleUpdateRequest
     ) {
+        blogService.updateTitle(blogId, blogTitleUpdateRequest);
         return ResponseEntity.noContent().build();
     }
 }
