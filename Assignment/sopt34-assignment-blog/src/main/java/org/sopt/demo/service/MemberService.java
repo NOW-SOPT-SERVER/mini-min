@@ -3,6 +3,8 @@ package org.sopt.demo.service;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.sopt.demo.domain.Member;
+import org.sopt.demo.exception.ErrorMessage;
+import org.sopt.demo.exception.model.NotFoundException;
 import org.sopt.demo.repository.MemberRepository;
 import org.sopt.demo.service.dto.AllMembersListDto;
 import org.sopt.demo.service.dto.MemberCreateDto;
@@ -25,11 +27,19 @@ public class MemberService {
         return member.getId().toString();
     }
 
+    public Member findById(
+            Long memberId
+    ) {
+        return memberRepository.findById(memberId).orElseThrow(
+                () -> new NotFoundException(ErrorMessage.MEMBER_NOT_FOUND)
+        );
+    }
+
     public MemberFindDto findMemberById(
             Long memberId
     ) {
         return MemberFindDto.of(memberRepository.findById(memberId).orElseThrow(
-                () -> new EntityNotFoundException("ID에 해당하는 사용자가 존재하지 않습니다.")
+                () -> new NotFoundException(ErrorMessage.MEMBER_NOT_FOUND)
         ));
     }
 

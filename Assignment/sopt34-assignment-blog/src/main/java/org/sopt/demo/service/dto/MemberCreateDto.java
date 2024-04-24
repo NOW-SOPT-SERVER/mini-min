@@ -1,6 +1,6 @@
 package org.sopt.demo.service.dto;
 
-import org.sopt.demo.domain.Part;
+import org.sopt.demo.domain.enums.Part;
 
 public record MemberCreateDto(
         String name,

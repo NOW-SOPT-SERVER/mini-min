@@ -10,12 +10,12 @@ import java.net.URI;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/member")
+@RequestMapping("/api/v1")
 public class MemberController implements MemberControllerSwagger {
     private final MemberService memberService;
 
     @Override
-    @PostMapping
+    @PostMapping("/member")
     public ResponseEntity createMember(
             @RequestBody MemberCreateDto memberCreate
     ) {
@@ -23,7 +23,7 @@ public class MemberController implements MemberControllerSwagger {
     }
 
     @Override
-    @GetMapping("/{memberId}")
+    @GetMapping("/member/{memberId}")
     public ResponseEntity findMemberById(
             @PathVariable Long memberId
     ) {
@@ -31,13 +31,13 @@ public class MemberController implements MemberControllerSwagger {
     }
 
     @Override
-    @GetMapping("/all")
+    @GetMapping("/member/all")
     public ResponseEntity findAllMembers() {
         return ResponseEntity.ok(memberService.findAllMembers());
     }
 
     @Override
-    @DeleteMapping("/{memberId}")
+    @DeleteMapping("/member/{memberId}")
     public ResponseEntity deleteMemberById(
             @PathVariable Long memberId
     ) {

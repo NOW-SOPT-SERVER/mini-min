@@ -5,7 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.sopt.demo.domain.Part;
+import org.sopt.demo.domain.enums.Part;
 import org.sopt.demo.repository.MemberRepository;
 import org.sopt.demo.service.MemberService;
 import org.sopt.demo.service.dto.MemberCreateDto;
