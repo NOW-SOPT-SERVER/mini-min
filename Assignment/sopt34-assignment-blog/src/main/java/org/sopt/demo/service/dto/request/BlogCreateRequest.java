@@ -1,4 +1,4 @@
-package org.sopt.demo.controller.dto.request;
+package org.sopt.demo.service.dto.request;
 
 public record BlogCreateRequest(
         String title,

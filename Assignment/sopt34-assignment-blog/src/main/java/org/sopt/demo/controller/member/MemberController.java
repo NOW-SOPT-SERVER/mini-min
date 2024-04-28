@@ -1,8 +1,8 @@
-package org.sopt.demo.controller;
+package org.sopt.demo.controller.member;
 
 import lombok.RequiredArgsConstructor;
 import org.sopt.demo.service.MemberService;
-import org.sopt.demo.service.dto.MemberCreateDto;
+import org.sopt.demo.service.dto.request.MemberCreateRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +17,7 @@ public class MemberController implements MemberControllerSwagger {
     @Override
     @PostMapping("/member")
     public ResponseEntity createMember(
-            @RequestBody MemberCreateDto memberCreate
+            @RequestBody MemberCreateRequest memberCreate
     ) {
         return ResponseEntity.created(URI.create(memberService.createMember(memberCreate))).build();
     }

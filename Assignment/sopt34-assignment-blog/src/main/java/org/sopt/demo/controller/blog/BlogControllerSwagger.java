@@ -1,11 +1,11 @@
-package org.sopt.demo.controller;
+package org.sopt.demo.controller.blog;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.sopt.demo.common.dto.ApiResponse;
-import org.sopt.demo.controller.dto.request.BlogCreateRequest;
-import org.sopt.demo.controller.dto.request.BlogTitleUpdateRequest;
+import org.sopt.demo.service.dto.request.BlogCreateRequest;
+import org.sopt.demo.service.dto.request.BlogTitleUpdateRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;

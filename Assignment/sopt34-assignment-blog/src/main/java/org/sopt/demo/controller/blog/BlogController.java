@@ -1,12 +1,12 @@
-package org.sopt.demo.controller;
+package org.sopt.demo.controller.blog;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.sopt.demo.common.dto.ApiResponse;
-import org.sopt.demo.controller.dto.request.BlogTitleUpdateRequest;
+import org.sopt.demo.service.dto.request.BlogTitleUpdateRequest;
 import org.sopt.demo.exception.SuccessMessage;
 import org.sopt.demo.service.BlogService;
-import org.sopt.demo.controller.dto.request.BlogCreateRequest;
+import org.sopt.demo.service.dto.request.BlogCreateRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,4 +37,6 @@ public class BlogController implements BlogControllerSwagger {
         blogService.updateTitle(blogId, blogTitleUpdateRequest);
         return ResponseEntity.noContent().build();
     }
+
+
 }

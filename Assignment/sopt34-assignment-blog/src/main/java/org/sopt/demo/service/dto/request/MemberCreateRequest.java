@@ -1,8 +1,8 @@
-package org.sopt.demo.service.dto;
+package org.sopt.demo.service.dto.request;
 
 import org.sopt.demo.domain.enums.Part;
 
-public record MemberCreateDto(
+public record MemberCreateRequest(
         String name,
         Part part,
         int age) {

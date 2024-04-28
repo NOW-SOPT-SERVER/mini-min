@@ -1,13 +1,13 @@
 package org.sopt.demo.service;
 
 import lombok.RequiredArgsConstructor;
-import org.sopt.demo.controller.dto.request.BlogTitleUpdateRequest;
+import org.sopt.demo.service.dto.request.BlogTitleUpdateRequest;
 import org.sopt.demo.domain.Blog;
 import org.sopt.demo.domain.Member;
 import org.sopt.demo.exception.ErrorMessage;
 import org.sopt.demo.exception.model.NotFoundException;
 import org.sopt.demo.repository.BlogRepository;
-import org.sopt.demo.controller.dto.request.BlogCreateRequest;
+import org.sopt.demo.service.dto.request.BlogCreateRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

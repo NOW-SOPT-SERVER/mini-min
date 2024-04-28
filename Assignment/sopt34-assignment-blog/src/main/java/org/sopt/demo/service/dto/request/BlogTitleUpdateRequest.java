@@ -1,4 +1,4 @@
-package org.sopt.demo.controller.dto.request;
+package org.sopt.demo.service.dto.request;
 
 import jakarta.validation.constraints.Size;
 
