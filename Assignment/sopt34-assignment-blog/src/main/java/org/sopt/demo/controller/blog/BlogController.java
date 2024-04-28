@@ -37,6 +37,4 @@ public class BlogController implements BlogControllerSwagger {
         blogService.updateTitle(blogId, blogTitleUpdateRequest);
         return ResponseEntity.noContent().build();
     }
-
-
 }

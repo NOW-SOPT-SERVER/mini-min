@@ -10,7 +10,8 @@ public enum SuccessMessage {
     /**
      * 201 CREATED SUCCESS
      */
-    BLOG_CREATE_SUCCESS(HttpStatus.CREATED.value(), "블로그 생성이 완료되었습니다.")
+    BLOG_CREATE_SUCCESS(HttpStatus.CREATED.value(), "블로그 생성이 완료되었습니다."),
+    BLOG_POST_CREATE_SUCCESS(HttpStatus.CREATED.value(), "블로그 글 작성이 완료되었습니다.")
     ;
 
     private final int status;
