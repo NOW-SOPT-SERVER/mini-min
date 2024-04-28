@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("api/v1")
 @RequiredArgsConstructor
-public class BlogController {
+public class BlogController implements BlogControllerSwagger {
 
     private final BlogService blogService;
 
