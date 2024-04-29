@@ -18,6 +18,7 @@ public class BlogController implements BlogControllerSwagger {
 
     private final BlogService blogService;
 
+    @Override
     @PostMapping("/blog")
     public ResponseEntity<ApiResponse> createBlog(
             @RequestHeader Long memberId,
@@ -29,6 +30,7 @@ public class BlogController implements BlogControllerSwagger {
                 .body(ApiResponse.success(SuccessMessage.BLOG_CREATE_SUCCESS));
     }
 
+    @Override
     @PatchMapping("/blog/{blogId}/title")
     public ResponseEntity<ApiResponse> updateBlogTitle(
             @PathVariable Long blogId,

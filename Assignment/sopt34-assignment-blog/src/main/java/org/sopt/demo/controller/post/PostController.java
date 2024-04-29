@@ -18,14 +18,22 @@ public class PostController implements PostControllerSwagger {
 
     private final PostService postService;
 
-    @PostMapping("/blog/{blogId}/post")
+    @PostMapping("/post")
     public ResponseEntity<ApiResponse> createBlogPost(
             @RequestHeader Long memberId,
-            @PathVariable Long blogId,
+            @RequestHeader Long blogId,
             @Valid @RequestBody BlogPostCreateRequest blogPostCreateRequest
     ) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .header("Location", postService.createBlogPost(memberId, blogId, blogPostCreateRequest))
                 .body(ApiResponse.success(SuccessMessage.BLOG_POST_CREATE_SUCCESS));
+    }
+
+    @GetMapping("/post/{postId}")
+    public ResponseEntity<ApiResponse> findPostById(
+            @PathVariable Long postId
+    ) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(ApiResponse.success(SuccessMessage.GET_POST_SUCCESS, postService.findPostById(postId)));
     }
 }
