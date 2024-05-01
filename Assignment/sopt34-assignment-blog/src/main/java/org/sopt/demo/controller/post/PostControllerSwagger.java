@@ -20,6 +20,7 @@ public interface PostControllerSwagger {
     @Operation(summary = "글 작성 API")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "블로그 글 작성이 완료되었습니다"),
+            @ApiResponse(responseCode = "400", description = "블로그 제목이 최대 글자 수(10자)를 초과했습니다."),
             @ApiResponse(responseCode = "403", description = "해당 사용자는 해당 블로그에 대한 접근 권한(글 작성, 수정, 삭제)이 없습니다"),
             @ApiResponse(responseCode = "404", description = "해당 블로그가 존재하지 않습니다")
     })
