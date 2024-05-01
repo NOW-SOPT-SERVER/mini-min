@@ -2,7 +2,7 @@ package org.sopt.demo.controller.blog;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.sopt.demo.common.dto.ApiResponse;
+import org.sopt.demo.common.dto.ResponseDto;
 import org.sopt.demo.service.dto.request.BlogTitleUpdateRequest;
 import org.sopt.demo.exception.SuccessMessage;
 import org.sopt.demo.service.BlogService;
@@ -20,23 +20,23 @@ public class BlogController implements BlogControllerSwagger {
 
     @Override
     @PostMapping("/blog")
-    public ResponseEntity<ApiResponse> createBlog(
+    public ResponseEntity<ResponseDto> createBlog(
             @RequestHeader Long memberId,
             @RequestBody BlogCreateRequest blogCreateRequest
     ) {
-        return ResponseEntity.status(HttpStatus.CREATED).header(
-                "Location",
-                blogService.createBlog(memberId, blogCreateRequest))
-                .body(ApiResponse.success(SuccessMessage.BLOG_CREATE_SUCCESS));
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .header("Location", blogService.createBlog(memberId, blogCreateRequest))
+                .body(ResponseDto.success(SuccessMessage.BLOG_CREATE_SUCCESS));
     }
 
     @Override
     @PatchMapping("/blog/{blogId}/title")
-    public ResponseEntity<ApiResponse> updateBlogTitle(
+    public ResponseEntity<ResponseDto> updateBlogTitle(
             @PathVariable Long blogId,
             @Valid @RequestBody BlogTitleUpdateRequest blogTitleUpdateRequest
     ) {
         blogService.updateTitle(blogId, blogTitleUpdateRequest);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT)
+                .body(ResponseDto.success(SuccessMessage.BLOG_NAME_PATCH_SUCCESS));
     }
 }

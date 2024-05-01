@@ -17,14 +17,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface MemberControllerSwagger {
 
     @Operation(summary = "멤버 생성 API")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "멤버 가입이 완료되었습니다")
+    })
     ResponseEntity createMember(@RequestBody MemberCreateRequest memberCreate);
 
     @Operation(summary = "멤버 조회 API")
-    @ApiResponses(
-            value = {
-                    @ApiResponse(responseCode = "200",
-                            content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = MemberFindResponse.class)))
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    content = @Content(schema = @Schema(implementation = MemberFindResponse.class)))
             }
     )
     ResponseEntity findMemberById(@PathVariable Long memberId);

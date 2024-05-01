@@ -1,6 +1,6 @@
 package org.sopt.demo.common;
 
-import org.sopt.demo.common.dto.ApiResponse;
+import org.sopt.demo.common.dto.ResponseDto;
 import org.sopt.demo.exception.model.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,14 +14,14 @@ import java.util.Objects;
 public class ControllerExceptionHandler {
 
     @ExceptionHandler(NotFoundException.class)
-    protected ResponseEntity<ApiResponse> handleNotFoundException(final NotFoundException e) {
+    protected ResponseEntity<ResponseDto> handleNotFoundException(final NotFoundException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(ApiResponse.error(e.getErrorMessage()));
+                .body(ResponseDto.error(e.getErrorMessage()));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    protected ResponseEntity<ApiResponse> handleMethodArgumentNotValidException(final MethodArgumentNotValidException e) {
+    protected ResponseEntity<ResponseDto> handleMethodArgumentNotValidException(final MethodArgumentNotValidException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(ApiResponse.error(HttpStatus.BAD_REQUEST.value(), Objects.requireNonNull(e.getBindingResult().getFieldError().getDefaultMessage())));
+                .body(ResponseDto.error(HttpStatus.BAD_REQUEST.value(), Objects.requireNonNull(e.getBindingResult().getFieldError().getDefaultMessage())));
     }
 }

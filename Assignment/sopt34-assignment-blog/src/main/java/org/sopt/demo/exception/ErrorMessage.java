@@ -13,13 +13,23 @@ public enum ErrorMessage {
     BAD_REQUEST_BLOG_NAME(HttpStatus.BAD_REQUEST.value(), "ID에 해당하는 사용자가 존재하지 않습니다."),
 
     /**
+     * 403 FORBIDDEN EXCEPTION
+     */
+
+
+    /**
      * 404 NOT FOUND
      */
     MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "ID에 해당하는 사용자가 존재하지 않습니다."),
     BLOG_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "해당 블로그가 존재하지 않습니다."),
-    POST_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "존재하지 않는 블로그 글입니다.")
+    POST_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "존재하지 않는 블로그 글을 조회하고 있습니다."),
 
+    /**
+     * 500 INTERNAL SERVER ERROR
+     */
+    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR.value(), "서버 내부 오류입니다."),
     ;
+
     private final int status;
     private final String message;
 }

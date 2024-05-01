@@ -1,7 +1,6 @@
 package org.sopt.demo.service;
 
 import lombok.RequiredArgsConstructor;
-import org.sopt.demo.service.dto.request.BlogPostCreateRequest;
 import org.sopt.demo.service.dto.request.BlogTitleUpdateRequest;
 import org.sopt.demo.domain.Blog;
 import org.sopt.demo.domain.Member;
