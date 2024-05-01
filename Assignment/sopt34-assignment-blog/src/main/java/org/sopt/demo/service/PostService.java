@@ -5,6 +5,7 @@ import org.sopt.demo.domain.Blog;
 import org.sopt.demo.domain.Member;
 import org.sopt.demo.domain.Post;
 import org.sopt.demo.exception.ErrorMessage;
+import org.sopt.demo.exception.model.ForbiddenException;
 import org.sopt.demo.exception.model.NotFoundException;
 import org.sopt.demo.repository.PostRepository;
 import org.sopt.demo.service.dto.request.BlogPostCreateRequest;
@@ -28,10 +29,19 @@ public class PostService {
     ) {
         Member member = memberService.findById(memberId);
         Blog blog = blogService.findBlogById(blogId);
-
+        checkBlogOwner(memberId, blog);
         Post post = Post.create(blogPostCreateRequest.title(), blogPostCreateRequest.content(), blog);
         post = postRepository.save(post);
         return post.getId().toString();
+    }
+
+    public void checkBlogOwner(
+            Long memberId,
+            Blog blog
+    ) {
+        if (!blog.getMember().getId().equals(memberId)) {
+            throw new ForbiddenException(ErrorMessage.POST_USER_FORBIDDEN);
+        }
     }
 
     public PostFindResponse findPostById(

@@ -10,12 +10,12 @@ public enum ErrorMessage {
     /**
      * 400 BAD REQUEST EXCEPTION
      */
-    BAD_REQUEST_BLOG_NAME(HttpStatus.BAD_REQUEST.value(), "ID에 해당하는 사용자가 존재하지 않습니다."),
+    BAD_REQUEST_BLOG_NAME(HttpStatus.BAD_REQUEST.value(), "블로그 제목이 최대 글자 수(10자)를 초과했습니다."),
 
     /**
      * 403 FORBIDDEN EXCEPTION
      */
-
+    POST_USER_FORBIDDEN(HttpStatus.FORBIDDEN.value(), "해당 사용자는 해당 블로그에 대한 접근 권한(글 작성, 수정, 삭제)이 없습니다."),
 
     /**
      * 404 NOT FOUND
@@ -31,5 +31,6 @@ public enum ErrorMessage {
     ;
 
     private final int status;
+    @Getter
     private final String message;
 }

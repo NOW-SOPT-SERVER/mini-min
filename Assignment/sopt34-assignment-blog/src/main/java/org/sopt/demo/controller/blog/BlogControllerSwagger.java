@@ -29,6 +29,7 @@ public interface BlogControllerSwagger {
     @Operation(summary = "블로그 이름 수정 API")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "블로그 이름 수정이 완료되었습니다"),
+            @ApiResponse(responseCode = "400", description = "블로그 제목이 최대 글자 수(10자)를 초과했습니다."),
             @ApiResponse(responseCode = "404", description = "해당 블로그가 존재하지 않습니다")
     })
     ResponseEntity<ResponseDto> updateBlogTitle(
