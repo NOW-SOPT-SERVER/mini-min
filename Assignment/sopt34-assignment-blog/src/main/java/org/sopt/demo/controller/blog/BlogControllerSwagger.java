@@ -18,7 +18,7 @@ public interface BlogControllerSwagger {
 
     @Operation(summary = "블로그 생성 API")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "블로그 글 작성이 완료되었습니다"),
+            @ApiResponse(responseCode = "201", description = "블로그 생성이 완료되었습니다"),
             @ApiResponse(responseCode = "404", description = "ID에 해당하는 사용자가 존재하지 않습니다")
     })
     ResponseEntity<ResponseDto> createBlog(
