@@ -5,10 +5,10 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.sopt.demo.domain.Part;
+import org.sopt.demo.domain.enums.Part;
 import org.sopt.demo.repository.MemberRepository;
 import org.sopt.demo.service.MemberService;
-import org.sopt.demo.service.dto.MemberCreateDto;
+import org.sopt.demo.service.dto.request.MemberCreateRequest;
 import org.sopt.demo.settings.ApiTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,7 +30,7 @@ public class MemberControllerTest extends ApiTest {
         @DisplayName("요청 성공 케이스")
         public void createMemberSuccess() throws Exception {
             //given
-            final var request = new MemberCreateDto(
+            final var request = new MemberCreateRequest(
                     "민재리",
                     Part.IOS,
                     24);

@@ -1,4 +1,4 @@
-package org.sopt.demo.domain;
+package org.sopt.demo.domain.enums;
 
 public enum Part {
 

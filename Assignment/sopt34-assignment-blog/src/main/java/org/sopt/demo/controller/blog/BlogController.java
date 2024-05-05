@@ -1,0 +1,42 @@
+package org.sopt.demo.controller.blog;
+
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.sopt.demo.common.dto.ResponseDto;
+import org.sopt.demo.service.dto.request.BlogTitleUpdateRequest;
+import org.sopt.demo.exception.SuccessMessage;
+import org.sopt.demo.service.BlogService;
+import org.sopt.demo.service.dto.request.BlogCreateRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("api/v1")
+@RequiredArgsConstructor
+public class BlogController implements BlogControllerSwagger {
+
+    private final BlogService blogService;
+
+    @Override
+    @PostMapping("/blog")
+    public ResponseEntity<ResponseDto> createBlog(
+            @RequestHeader Long memberId,
+            @RequestBody BlogCreateRequest blogCreateRequest
+    ) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .header("Location", blogService.createBlog(memberId, blogCreateRequest))
+                .body(ResponseDto.success(SuccessMessage.BLOG_CREATE_SUCCESS));
+    }
+
+    @Override
+    @PatchMapping("/blog/{blogId}/title")
+    public ResponseEntity<ResponseDto> updateBlogTitle(
+            @PathVariable Long blogId,
+            @Valid @RequestBody BlogTitleUpdateRequest blogTitleUpdateRequest
+    ) {
+        blogService.updateTitle(blogId, blogTitleUpdateRequest);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT)
+                .body(ResponseDto.success(SuccessMessage.BLOG_NAME_PATCH_SUCCESS));
+    }
+}

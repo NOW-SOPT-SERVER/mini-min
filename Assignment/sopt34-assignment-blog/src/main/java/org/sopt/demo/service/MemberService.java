@@ -3,10 +3,12 @@ package org.sopt.demo.service;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.sopt.demo.domain.Member;
+import org.sopt.demo.exception.ErrorMessage;
+import org.sopt.demo.exception.model.NotFoundException;
 import org.sopt.demo.repository.MemberRepository;
-import org.sopt.demo.service.dto.AllMembersListDto;
-import org.sopt.demo.service.dto.MemberCreateDto;
-import org.sopt.demo.service.dto.MemberFindDto;
+import org.sopt.demo.service.dto.response.AllMembersResponse;
+import org.sopt.demo.service.dto.request.MemberCreateRequest;
+import org.sopt.demo.service.dto.response.MemberFindResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,32 +20,37 @@ public class MemberService {
 
     @Transactional
     public String createMember(
-            MemberCreateDto memberCreateDto
+            final MemberCreateRequest memberCreateRequest
     ) {
-        Member member = Member.create(memberCreateDto.name(), memberCreateDto.part(), memberCreateDto.age());
+        Member member = Member.create(memberCreateRequest.name(), memberCreateRequest.part(), memberCreateRequest.age());
         memberRepository.save(member);
         return member.getId().toString();
     }
 
-    public MemberFindDto findMemberById(
-            Long memberId
+    public Member findById(
+            final Long memberId
     ) {
-        return MemberFindDto.of(memberRepository.findById(memberId).orElseThrow(
-                () -> new EntityNotFoundException("ID에 해당하는 사용자가 존재하지 않습니다.")
-        ));
+        return memberRepository.findById(memberId).orElseThrow(
+                () -> new NotFoundException(ErrorMessage.MEMBER_NOT_FOUND)
+        );
     }
 
-    public AllMembersListDto findAllMembers() {
-        return AllMembersListDto.of(memberRepository.findAll());
+    public MemberFindResponse findMemberById(
+            final Long memberId
+    ) {
+        Member member = findById(memberId);
+        return MemberFindResponse.of(member);
+    }
+
+    public AllMembersResponse findAllMembers() {
+        return AllMembersResponse.of(memberRepository.findAll());
     }
 
     @Transactional
     public void deleteMemberById(
-            Long memberId
+            final Long memberId
     ) {
-        Member member = memberRepository.findById(memberId).orElseThrow(
-                () -> new EntityNotFoundException("ID에 해당하는 사용자가 존재하지 않습니다.")
-        );
+        Member member = findById(memberId);
         memberRepository.delete(member);
     }
 }

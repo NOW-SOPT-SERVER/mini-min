@@ -1,4 +1,4 @@
-package org.sopt.demo.controller;
+package org.sopt.demo.controller.member;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -6,9 +6,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.sopt.demo.service.dto.AllMembersListDto;
-import org.sopt.demo.service.dto.MemberCreateDto;
-import org.sopt.demo.service.dto.MemberFindDto;
+import org.sopt.demo.service.dto.response.AllMembersResponse;
+import org.sopt.demo.service.dto.request.MemberCreateRequest;
+import org.sopt.demo.service.dto.response.MemberFindResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,14 +17,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface MemberControllerSwagger {
 
     @Operation(summary = "멤버 생성 API")
-    ResponseEntity createMember(@RequestBody MemberCreateDto memberCreate);
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "멤버 가입이 완료되었습니다")
+    })
+    ResponseEntity createMember(@RequestBody MemberCreateRequest memberCreate);
 
     @Operation(summary = "멤버 조회 API")
-    @ApiResponses(
-            value = {
-                    @ApiResponse(responseCode = "200",
-                            content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = MemberFindDto.class)))
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    content = @Content(schema = @Schema(implementation = MemberFindResponse.class)))
             }
     )
     ResponseEntity findMemberById(@PathVariable Long memberId);
@@ -34,7 +35,7 @@ public interface MemberControllerSwagger {
             value = {
                     @ApiResponse(responseCode = "200",
                             content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = AllMembersListDto.class))),
+                                    schema = @Schema(implementation = AllMembersResponse.class))),
             }
     )
     ResponseEntity findAllMembers();
