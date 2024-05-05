@@ -20,7 +20,7 @@ public class MemberService {
 
     @Transactional
     public String createMember(
-            MemberCreateRequest memberCreateRequest
+            final MemberCreateRequest memberCreateRequest
     ) {
         Member member = Member.create(memberCreateRequest.name(), memberCreateRequest.part(), memberCreateRequest.age());
         memberRepository.save(member);
@@ -28,7 +28,7 @@ public class MemberService {
     }
 
     public Member findById(
-            Long memberId
+            final Long memberId
     ) {
         return memberRepository.findById(memberId).orElseThrow(
                 () -> new NotFoundException(ErrorMessage.MEMBER_NOT_FOUND)
@@ -36,7 +36,7 @@ public class MemberService {
     }
 
     public MemberFindResponse findMemberById(
-            Long memberId
+            final Long memberId
     ) {
         Member member = findById(memberId);
         return MemberFindResponse.of(member);
@@ -48,7 +48,7 @@ public class MemberService {
 
     @Transactional
     public void deleteMemberById(
-            Long memberId
+            final Long memberId
     ) {
         Member member = findById(memberId);
         memberRepository.delete(member);

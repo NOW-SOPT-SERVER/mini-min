@@ -11,7 +11,7 @@ public record PostFindResponse(
         LocalDateTime updatedAt
 ) {
     public static PostFindResponse of(
-            Post post
+            final Post post
     ) {
         return new PostFindResponse(post.getTitle(), post.getContent(), post.getCreatedAt(), post.getUpdatedAt());
     }

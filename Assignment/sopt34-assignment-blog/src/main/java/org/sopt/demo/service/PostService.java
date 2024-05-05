@@ -23,9 +23,9 @@ public class PostService {
 
     @Transactional
     public String createBlogPost(
-            Long memberId,
-            Long blogId,
-            BlogPostCreateRequest blogPostCreateRequest
+            final Long memberId,
+            final Long blogId,
+            final BlogPostCreateRequest blogPostCreateRequest
     ) {
         Blog blog = blogService.findById(blogId);
         checkBlogOwner(memberId, blog);
@@ -34,9 +34,9 @@ public class PostService {
         return post.getId().toString();
     }
 
-    public void checkBlogOwner(
-            Long memberId,
-            Blog blog
+    private void checkBlogOwner(
+            final Long memberId,
+            final Blog blog
     ) {
         if (!blog.getMember().getId().equals(memberId)) {
             throw new ForbiddenException(ErrorMessage.POST_USER_FORBIDDEN);
@@ -44,14 +44,14 @@ public class PostService {
     }
 
     public PostFindResponse findPostById(
-            Long postId
+            final Long postId
     ) {
         Post post = findById(postId);
         return PostFindResponse.of(post);
     }
 
     public Post findById(
-            Long postId
+            final Long postId
     ) {
         return postRepository.findById(postId).orElseThrow(
                 () -> new NotFoundException(ErrorMessage.POST_NOT_FOUND)

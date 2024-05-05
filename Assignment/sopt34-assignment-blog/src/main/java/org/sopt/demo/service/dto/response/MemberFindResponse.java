@@ -9,7 +9,7 @@ public record MemberFindResponse(
         int age
 ) {
     public static MemberFindResponse of(
-            Member member
+            final Member member
     ) {
         return new MemberFindResponse(member.getName(), member.getPart(), member.getAge());
     }
