@@ -11,6 +11,9 @@ public record MemberFindResponse(
     public static MemberFindResponse of(
             final Member member
     ) {
-        return new MemberFindResponse(member.getName(), member.getPart(), member.getAge());
+        return new MemberFindResponse(
+                member.getName(),
+                member.getPart(),
+                member.getAge());
     }
 }
