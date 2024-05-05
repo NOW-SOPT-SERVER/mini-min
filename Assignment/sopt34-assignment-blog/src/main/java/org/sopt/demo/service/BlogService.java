@@ -26,11 +26,11 @@ public class BlogService {
 
     @Transactional
     public void updateTitle(Long blogId, BlogTitleUpdateRequest blogTitleUpdateRequest) {
-        Blog blog = findBlogById(blogId);
+        Blog blog = findById(blogId);
         blog.updateTitle(blogTitleUpdateRequest.title());
     }
 
-    public Blog findBlogById(Long blogId) {
+    public Blog findById(Long blogId) {
         return blogRepository.findById(blogId).orElseThrow(
                 () -> new NotFoundException(ErrorMessage.BLOG_NOT_FOUND)
         );

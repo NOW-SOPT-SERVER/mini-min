@@ -6,7 +6,7 @@ import org.sopt.demo.domain.Member;
 import org.sopt.demo.exception.ErrorMessage;
 import org.sopt.demo.exception.model.NotFoundException;
 import org.sopt.demo.repository.MemberRepository;
-import org.sopt.demo.service.dto.response.AllMembersListResponse;
+import org.sopt.demo.service.dto.response.AllMembersResponse;
 import org.sopt.demo.service.dto.request.MemberCreateRequest;
 import org.sopt.demo.service.dto.response.MemberFindResponse;
 import org.springframework.stereotype.Service;
@@ -38,22 +38,19 @@ public class MemberService {
     public MemberFindResponse findMemberById(
             Long memberId
     ) {
-        return MemberFindResponse.of(memberRepository.findById(memberId).orElseThrow(
-                () -> new NotFoundException(ErrorMessage.MEMBER_NOT_FOUND)
-        ));
+        Member member = findById(memberId);
+        return MemberFindResponse.of(member);
     }
 
-    public AllMembersListResponse findAllMembers() {
-        return AllMembersListResponse.of(memberRepository.findAll());
+    public AllMembersResponse findAllMembers() {
+        return AllMembersResponse.of(memberRepository.findAll());
     }
 
     @Transactional
     public void deleteMemberById(
             Long memberId
     ) {
-        Member member = memberRepository.findById(memberId).orElseThrow(
-                () -> new EntityNotFoundException("ID에 해당하는 사용자가 존재하지 않습니다.")
-        );
+        Member member = findById(memberId);
         memberRepository.delete(member);
     }
 }

@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.sopt.demo.service.dto.response.AllMembersListResponse;
+import org.sopt.demo.service.dto.response.AllMembersResponse;
 import org.sopt.demo.service.dto.request.MemberCreateRequest;
 import org.sopt.demo.service.dto.response.MemberFindResponse;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +35,7 @@ public interface MemberControllerSwagger {
             value = {
                     @ApiResponse(responseCode = "200",
                             content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = AllMembersListResponse.class))),
+                                    schema = @Schema(implementation = AllMembersResponse.class))),
             }
     )
     ResponseEntity findAllMembers();

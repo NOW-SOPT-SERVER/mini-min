@@ -27,8 +27,7 @@ public class PostService {
             Long blogId,
             BlogPostCreateRequest blogPostCreateRequest
     ) {
-        Member member = memberService.findById(memberId);
-        Blog blog = blogService.findBlogById(blogId);
+        Blog blog = blogService.findById(blogId);
         checkBlogOwner(memberId, blog);
         Post post = Post.create(blogPostCreateRequest.title(), blogPostCreateRequest.content(), blog);
         post = postRepository.save(post);
@@ -47,8 +46,15 @@ public class PostService {
     public PostFindResponse findPostById(
             Long postId
     ) {
-        return PostFindResponse.of(postRepository.findById(postId).orElseThrow(
+        Post post = findById(postId);
+        return PostFindResponse.of(post);
+    }
+
+    public Post findById(
+            Long postId
+    ) {
+        return postRepository.findById(postId).orElseThrow(
                 () -> new NotFoundException(ErrorMessage.POST_NOT_FOUND)
-        ));
+        );
     }
 }
