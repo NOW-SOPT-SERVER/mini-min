@@ -15,6 +15,7 @@ public enum SuccessMessage {
      * 201 CREATED SUCCESS
      */
     USER_CREATE_SUCCESS(HttpStatus.CREATED.value(), "새로운 유저가 생성되었습니다."),
+    PRODUCT_CREATE_SUCCESS(HttpStatus.CREATED.value(), "새로운 물건이 생성되었습니다."),
 
     /**
      * 204 NO_CONTENT SUCCESS

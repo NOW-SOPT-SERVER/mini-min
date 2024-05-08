@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.carrot.server.domain.User;
 import org.carrot.server.exception.ErrorMessage;
 import org.carrot.server.exception.model.BadRequestException;
+import org.carrot.server.exception.model.NotFoundException;
 import org.carrot.server.repository.UserRepository;
 import org.carrot.server.service.dto.request.UserCreateRequest;
 import org.carrot.server.service.dto.response.UserCreateResponse;
@@ -14,6 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+
+    public User findById(
+            final Long userId
+    ) {
+        return userRepository.findById(userId).orElseThrow(
+                () -> new NotFoundException(ErrorMessage.USER_NOT_FOUND)
+        );
+    }
 
     @Transactional
     public UserCreateResponse createUser(
