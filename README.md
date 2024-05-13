@@ -2,6 +2,10 @@
 
 <br>
 
+---
+
+<br>
+
 ## 1주차: Java, OOP, Spring Boot
 <img width="1564" alt="server" src="https://github.com/mini-min/mini-min-server/assets/69389288/42230c11-907a-4edf-8e47-7720596dc104">
 
@@ -18,7 +22,7 @@
 
 [🧑🏻‍💻 실습 과제 구현 내용 정리 PR 보러가기](https://github.com/NOW-SOPT-SERVER/mini-min/pull/4)
 
-[🥕 클론 코딩 과제 구현 내용 정리 PR 보러가기 (공사중)]()
+[🥕 클론 코딩 과제 구현 내용 정리 PR 보러가기](https://github.com/NOW-SOPT-SERVER/mini-min/pull/10)
 
 <br>
 
@@ -28,3 +32,10 @@
 [✍🏻 키워드 과제 정리 Wiki 보러가기](https://github.com/NOW-SOPT-SERVER/mini-min/wiki/3%EC%B0%A8-%EC%84%B8%EB%AF%B8%EB%82%98-%7C-%ED%82%A4%EC%9B%8C%EB%93%9C-%EA%B3%BC%EC%A0%9C-%EC%A0%95%EB%A6%AC)
 
 [🧑🏻‍💻 실습 과제 구현 내용 정리 PR 보러가기](https://github.com/NOW-SOPT-SERVER/mini-min/pull/9)
+
+<br>
+
+## 4주차: AWS RDS, EC2, Nginx
+<img width="1564" alt="server" src="https://github.com/mini-min/mini-min-server/assets/69389288/f35810a6-8672-4d12-9e9f-e59c2bf2fa70">
+
+[✍🏻 키워드 과제 정리 Wiki 보러가기](https://github.com/NOW-SOPT-SERVER/mini-min/wiki/4%EC%B0%A8-%EC%84%B8%EB%AF%B8%EB%82%98-%7C-%ED%82%A4%EC%9B%8C%EB%93%9C-%EA%B3%BC%EC%A0%9C-%EC%A0%95%EB%A6%AC)
