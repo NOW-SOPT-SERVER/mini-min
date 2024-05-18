@@ -1,4 +1,4 @@
-package org.sopt.demo.common.dto;
+package org.sopt.demo.common;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

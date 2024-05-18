@@ -5,7 +5,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.sopt.demo.common.dto.ResponseDto;
+import org.sopt.demo.common.ResponseDto;
 import org.sopt.demo.service.dto.request.BlogCreateRequest;
 import org.sopt.demo.service.dto.request.BlogTitleUpdateRequest;
 import org.springframework.http.ResponseEntity;
