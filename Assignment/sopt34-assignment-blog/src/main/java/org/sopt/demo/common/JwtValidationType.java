@@ -1,7 +1,7 @@
 package org.sopt.demo.common;
 
 public enum JwtValidationType {
-    VALID_JWT,              // 유효한 JWT
+    VALID_JWT,                  // 유효한 JWT
     INVALID_JWT_SIGNATURE,      // 유효하지 않은 서명
     INVALID_JWT_TOKEN,          // 유효하지 않은 토큰
     EXPIRED_JWT_TOKEN,          // 만료된 토큰

@@ -2,6 +2,7 @@ package org.sopt.demo.controller.blog;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.sopt.demo.auth.PrincipalHandler;
 import org.sopt.demo.common.ResponseDto;
 import org.sopt.demo.service.dto.request.BlogTitleUpdateRequest;
 import org.sopt.demo.exception.SuccessMessage;
@@ -12,20 +13,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/v1")
+@RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class BlogController implements BlogControllerSwagger {
 
     private final BlogService blogService;
+    private final PrincipalHandler principalHandler;
 
     @Override
     @PostMapping("/blog")
     public ResponseEntity<ResponseDto> createBlog(
-            @RequestHeader Long memberId,
             @RequestBody BlogCreateRequest blogCreateRequest
     ) {
         return ResponseEntity.status(HttpStatus.CREATED)
-                .header("Location", blogService.createBlog(memberId, blogCreateRequest))
+                .header("Location", blogService.createBlog(
+                        principalHandler.getUserIdFromPrincipal(),
+                        blogCreateRequest
+                ))
                 .body(ResponseDto.success(SuccessMessage.BLOG_CREATE_SUCCESS));
     }
 

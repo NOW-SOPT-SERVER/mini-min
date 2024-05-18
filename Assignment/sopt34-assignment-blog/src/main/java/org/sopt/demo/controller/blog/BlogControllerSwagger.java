@@ -22,7 +22,6 @@ public interface BlogControllerSwagger {
             @ApiResponse(responseCode = "404", description = "ID에 해당하는 사용자가 존재하지 않습니다")
     })
     ResponseEntity<ResponseDto> createBlog(
-            @RequestHeader Long memberId,
             @RequestBody BlogCreateRequest blogCreateRequest
     );
 

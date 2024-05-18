@@ -3,6 +3,7 @@ package org.sopt.demo.exception;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.client.HttpClientErrorException;
 
 @Getter
 @AllArgsConstructor
@@ -11,6 +12,11 @@ public enum ErrorMessage {
      * 400 BAD REQUEST EXCEPTION
      */
     BAD_REQUEST_BLOG_NAME(HttpStatus.BAD_REQUEST.value(), "블로그 제목이 최대 글자 수(10자)를 초과했습니다."),
+
+    /**
+     * 401 FORBIDDEN EXCEPTION
+     */
+    JWT_UNAUTHORIZED_EXCEPTION(HttpStatus.UNAUTHORIZED.value(), "사용자의 로그인 검증을 실패했습니다."),
 
     /**
      * 403 FORBIDDEN EXCEPTION
