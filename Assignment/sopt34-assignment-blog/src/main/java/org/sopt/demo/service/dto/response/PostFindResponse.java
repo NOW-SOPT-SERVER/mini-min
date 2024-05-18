@@ -2,6 +2,7 @@ package org.sopt.demo.service.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.sopt.demo.common.ControllerExceptionHandler;
+import org.sopt.demo.common.DateUtil;
 import org.sopt.demo.domain.Post;
 
 public record PostFindResponse(
@@ -18,8 +19,8 @@ public record PostFindResponse(
         return new PostFindResponse(
                 post.getTitle(),
                 post.getContent(),
-                ControllerExceptionHandler.DateUtil.getStringWithTimeOfLocalDate(post.getCreatedAt()),
-                ControllerExceptionHandler.DateUtil.getStringWithTimeOfLocalDate(post.getUpdatedAt())
+                DateUtil.getStringWithTimeOfLocalDate(post.getCreatedAt()),
+                DateUtil.getStringWithTimeOfLocalDate(post.getUpdatedAt())
         );
     }
 }

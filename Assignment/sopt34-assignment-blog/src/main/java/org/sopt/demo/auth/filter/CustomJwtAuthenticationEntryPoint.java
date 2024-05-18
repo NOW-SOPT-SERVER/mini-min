@@ -23,8 +23,7 @@ public class CustomJwtAuthenticationEntryPoint implements AuthenticationEntryPoi
     public void commence(
             HttpServletRequest request,
             HttpServletResponse response,
-            AuthenticationException authException
-    ) throws IOException {
+            AuthenticationException authException) throws IOException {
         setResponse(response);
     }
 

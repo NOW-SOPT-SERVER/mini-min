@@ -23,19 +23,27 @@ public class Blog extends BaseTimeEntity {
 
     private String description;
 
-    public static Blog create(final Member member, BlogCreateRequest blogCreateRequest) {
+    private String imageUrl;
+
+    public static Blog create(
+            final Member member,
+            BlogCreateRequest blogCreateRequest,
+            String imageUrl
+    ) {
         return Blog.builder()
                 .member(member)
                 .title(blogCreateRequest.title())
                 .description(blogCreateRequest.description())
+                .imageUrl(imageUrl)
                 .build();
     }
 
     @Builder
-    private Blog(Member member, String title, String description) {
+    private Blog(Member member, String title, String description, String imageUrl) {
         this.member = member;
         this.title = title;
         this.description = description;
+        this.imageUrl = imageUrl;
     }
 
     public void updateTitle(String title) {

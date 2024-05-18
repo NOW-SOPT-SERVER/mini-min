@@ -45,7 +45,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 
 	// redis
-	implementation 'org.springframwork.boot:spring-boot-starter-data-redis:2.3.1.RELEASE'
+	// implementation 'org.springframwork.boot:spring-boot-starter-data-redis:2.3.1.RELEASE
+
+	// Muitipart file
+	implementation("software.amazon.awssdk:bom:2.21.0")
+	implementation("software.amazon.awssdk:s3:2.21.0")
 }
 
 tasks.named('test') {

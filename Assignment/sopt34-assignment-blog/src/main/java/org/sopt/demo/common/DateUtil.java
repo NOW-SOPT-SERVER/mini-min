@@ -1,4 +1,4 @@
-package org.sopt.demo.common.utils;
+package org.sopt.demo.common;
 
 import org.springframework.stereotype.Component;
 

@@ -23,7 +23,7 @@ public class BlogController implements BlogControllerSwagger {
     @Override
     @PostMapping("/blog")
     public ResponseEntity<ResponseDto> createBlog(
-            @RequestBody BlogCreateRequest blogCreateRequest
+            @ModelAttribute BlogCreateRequest blogCreateRequest
     ) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .header("Location", blogService.createBlog(
