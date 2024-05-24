@@ -3,7 +3,7 @@ package org.sopt.demo.controller.blog;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.sopt.demo.auth.PrincipalHandler;
-import org.sopt.demo.common.ResponseDto;
+import org.sopt.demo.common.dto.ResponseDto;
 import org.sopt.demo.service.dto.request.BlogTitleUpdateRequest;
 import org.sopt.demo.exception.SuccessMessage;
 import org.sopt.demo.service.BlogService;

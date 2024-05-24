@@ -1,4 +1,4 @@
-package org.sopt.demo.common;
+package org.sopt.demo.common.jwt;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;

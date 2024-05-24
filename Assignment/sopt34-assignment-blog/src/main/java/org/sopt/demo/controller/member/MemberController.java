@@ -1,8 +1,6 @@
 package org.sopt.demo.controller.member;
 
 import lombok.RequiredArgsConstructor;
-import org.sopt.demo.common.ResponseDto;
-import org.sopt.demo.exception.SuccessMessage;
 import org.sopt.demo.service.MemberService;
 import org.sopt.demo.service.dto.request.MemberCreateRequest;
 import org.sopt.demo.service.dto.response.UserJoinResponse;

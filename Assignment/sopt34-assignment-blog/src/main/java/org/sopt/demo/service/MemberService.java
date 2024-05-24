@@ -1,9 +1,8 @@
 package org.sopt.demo.service;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.sopt.demo.auth.UserAuthentication;
-import org.sopt.demo.common.JwtTokenProvider;
+import org.sopt.demo.common.jwt.JwtTokenProvider;
 import org.sopt.demo.domain.Member;
 import org.sopt.demo.exception.ErrorMessage;
 import org.sopt.demo.exception.model.NotFoundException;

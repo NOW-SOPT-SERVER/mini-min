@@ -1,4 +1,4 @@
-package org.sopt.demo.common;
+package org.sopt.demo.common.jwt;
 
 public enum JwtValidationType {
     VALID_JWT,                  // 유효한 JWT

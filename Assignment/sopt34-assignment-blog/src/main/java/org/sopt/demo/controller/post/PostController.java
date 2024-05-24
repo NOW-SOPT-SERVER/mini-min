@@ -2,7 +2,7 @@ package org.sopt.demo.controller.post;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.sopt.demo.common.ResponseDto;
+import org.sopt.demo.common.dto.ResponseDto;
 import org.sopt.demo.exception.SuccessMessage;
 import org.sopt.demo.service.PostService;
 import org.sopt.demo.service.dto.request.BlogPostCreateRequest;

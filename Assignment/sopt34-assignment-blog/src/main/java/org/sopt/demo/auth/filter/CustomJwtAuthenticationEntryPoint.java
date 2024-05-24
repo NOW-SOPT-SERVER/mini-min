@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.sopt.demo.common.ResponseDto;
+import org.sopt.demo.common.dto.ResponseDto;
 import org.sopt.demo.exception.ErrorMessage;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;

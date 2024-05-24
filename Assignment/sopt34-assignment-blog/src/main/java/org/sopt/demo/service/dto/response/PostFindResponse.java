@@ -1,8 +1,7 @@
 package org.sopt.demo.service.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import org.sopt.demo.common.ControllerExceptionHandler;
-import org.sopt.demo.common.DateUtil;
+import org.sopt.demo.common.utils.DateUtil;
 import org.sopt.demo.domain.Post;
 
 public record PostFindResponse(

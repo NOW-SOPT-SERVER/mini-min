@@ -1,5 +1,6 @@
-package org.sopt.demo.common;
+package org.sopt.demo.common.advice;
 
+import org.sopt.demo.common.dto.ResponseDto;
 import org.sopt.demo.exception.ErrorMessage;
 import org.sopt.demo.exception.model.BusinessException;
 import org.sopt.demo.exception.model.ForbiddenException;
@@ -7,14 +8,10 @@ import org.sopt.demo.exception.model.NotFoundException;
 import org.sopt.demo.exception.model.UnauthorizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 @RestControllerAdvice
