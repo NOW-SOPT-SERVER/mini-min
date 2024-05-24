@@ -4,9 +4,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import org.sopt.demo.common.utils.DateUtil;
 import org.sopt.demo.domain.Post;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
 public record PostFindResponse(
         String title,
         String content,
