@@ -11,6 +11,7 @@ import org.sopt.demo.repository.MemberRepository;
 import org.sopt.demo.service.dto.response.AllMembersResponse;
 import org.sopt.demo.service.dto.request.MemberCreateRequest;
 import org.sopt.demo.service.dto.response.MemberFindResponse;
+import org.sopt.demo.service.dto.response.RefreshAccessTokenResponse;
 import org.sopt.demo.service.dto.response.UserJoinResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -63,5 +64,14 @@ public class MemberService {
     ) {
         Member member = findById(memberId);
         memberRepository.delete(member);
+    }
+
+    public RefreshAccessTokenResponse getAccessToken(
+            final String refreshToken
+    ) {
+        Long userId = redisTokenService.findMemberIdByRefreshToken(refreshToken);
+        UserAuthentication userAuthentication = UserAuthentication.createUserAuthentication(userId);
+        String accessToken = jwtTokenProvider.issueAccessToken(userAuthentication);
+        return RefreshAccessTokenResponse.of(accessToken);
     }
 }
