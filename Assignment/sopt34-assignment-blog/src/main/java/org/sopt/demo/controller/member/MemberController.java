@@ -51,6 +51,7 @@ public class MemberController implements MemberControllerSwagger {
         return ResponseEntity.noContent().build();
     }
 
+    @Override
     @GetMapping("/refresh-token")
     public ResponseEntity<RefreshAccessTokenResponse> refreshAccessToken(
             @RequestHeader String refreshToken

@@ -9,9 +9,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.sopt.demo.service.dto.response.AllMembersResponse;
 import org.sopt.demo.service.dto.request.MemberCreateRequest;
 import org.sopt.demo.service.dto.response.MemberFindResponse;
+import org.sopt.demo.service.dto.response.RefreshAccessTokenResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 @Tag(name = "멤버", description = "[MemberController] 멤버 관련 API 입니다.")
 public interface MemberControllerSwagger {
@@ -43,4 +45,6 @@ public interface MemberControllerSwagger {
     @Operation(summary = "멤버 삭제 API")
     ResponseEntity deleteMemberById(@PathVariable Long memberId);
 
+    @Operation(summary = "AccessToken 재발급 API")
+    ResponseEntity<RefreshAccessTokenResponse> refreshAccessToken(@RequestHeader String refreshToken);
 }
