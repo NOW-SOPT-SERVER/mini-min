@@ -55,15 +55,15 @@ public class ControllerExceptionHandler {
     /**
      * 500 INTERNAL SERVER ERROR
      */
-    @ExceptionHandler(BusinessException.class)
-    protected ResponseEntity<ResponseDto> handleInternalServerError(final BusinessException e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(ResponseDto.error(ErrorMessage.INTERNAL_SERVER_ERROR));
-    }
-
-    @ExceptionHandler(Exception.class)
-    protected ResponseEntity<ResponseDto> handleInternalServerError(final Exception e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(ResponseDto.error(ErrorMessage.INTERNAL_SERVER_ERROR));
-    }
+//    @ExceptionHandler(BusinessException.class)
+//    protected ResponseEntity<ResponseDto> handleInternalServerError(final BusinessException e) {
+//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                .body(ResponseDto.error(ErrorMessage.INTERNAL_SERVER_ERROR));
+//    }
+//
+//    @ExceptionHandler(Exception.class)
+//    protected ResponseEntity<ResponseDto> handleInternalServerError(final Exception e) {
+//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                .body(ResponseDto.error(ErrorMessage.INTERNAL_SERVER_ERROR));
+//    }
 }

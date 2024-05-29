@@ -2,6 +2,7 @@ package org.sopt.demo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.sopt.demo.auth.UserAuthentication;
+import org.sopt.demo.auth.redis.service.RedisTokenService;
 import org.sopt.demo.common.jwt.JwtTokenProvider;
 import org.sopt.demo.domain.Member;
 import org.sopt.demo.exception.ErrorMessage;
@@ -20,6 +21,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
     private final JwtTokenProvider jwtTokenProvider;
+    private final RedisTokenService redisTokenService;
 
     @Transactional
     public UserJoinResponse createMember(
@@ -29,10 +31,11 @@ public class MemberService {
                 Member.create(memberCreateRequest.name(), memberCreateRequest.part(), memberCreateRequest.age())
         );
         Long memberId = member.getId();
-        String accessToken = jwtTokenProvider.issueAccessToken(
-                UserAuthentication.createUserAuthentication(memberId)
-        );
-        return UserJoinResponse.of(accessToken, memberId.toString());
+        UserAuthentication userAuthentication = UserAuthentication.createUserAuthentication(memberId);
+        String accessToken = jwtTokenProvider.issueAccessToken(userAuthentication);
+        String refreshToken = jwtTokenProvider.issueRefreshToken(userAuthentication);
+        redisTokenService.saveRefreshToken(memberId, refreshToken);
+        return UserJoinResponse.of(accessToken, refreshToken, memberId.toString());
     }
 
     public Member findById(

@@ -26,11 +26,14 @@ public class JwtTokenProvider {
         return generateToken(authentication, ACCESS_TOKEN_EXPIRATION_TIME);
     }
 
-    public String refreshAccessToken(final Authentication authentication) {
+    public String issueRefreshToken(final Authentication authentication) {
         return generateToken(authentication, REFRESH_TOKEN_EXPIRATION_TIME);
     }
 
-    public String generateToken(Authentication authentication, Long tokenExpirationTime) {
+    public String generateToken(
+            final Authentication authentication,
+            final Long tokenExpirationTime
+    ) {
         final Date now = new Date();
         final Claims claims = Jwts.claims()
                 .setIssuedAt(now)

@@ -17,6 +17,7 @@ public enum ErrorMessage {
      * 401 FORBIDDEN EXCEPTION
      */
     JWT_UNAUTHORIZED_EXCEPTION(HttpStatus.UNAUTHORIZED.value(), "사용자의 로그인 검증을 실패했습니다."),
+    LOGIN_REQUIRED_EXCEPTION(HttpStatus.UNAUTHORIZED.value(), "로그인을 재진행해주세요."),
 
     /**
      * 403 FORBIDDEN EXCEPTION
