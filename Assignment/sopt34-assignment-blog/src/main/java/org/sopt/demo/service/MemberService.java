@@ -32,10 +32,8 @@ public class MemberService {
                 Member.create(memberCreateRequest.name(), memberCreateRequest.part(), memberCreateRequest.age())
         );
         Long memberId = member.getId();
-        UserAuthentication userAuthentication = UserAuthentication.createUserAuthentication(memberId);
-        String accessToken = jwtTokenProvider.issueAccessToken(userAuthentication);
-        String refreshToken = jwtTokenProvider.issueRefreshToken(userAuthentication);
-        redisTokenService.saveRefreshToken(memberId, refreshToken);
+        String accessToken = generateAccessTokenById(memberId);
+        String refreshToken = generateRefreshTokenById(memberId);
         return UserJoinResponse.of(accessToken, refreshToken, memberId.toString());
     }
 
@@ -70,8 +68,22 @@ public class MemberService {
             final String refreshToken
     ) {
         Long userId = redisTokenService.findMemberIdByRefreshToken(refreshToken);
+        return RefreshAccessTokenResponse.of(generateAccessTokenById(userId));
+    }
+
+    private String generateAccessTokenById(
+            final Long userId
+    ) {
         UserAuthentication userAuthentication = UserAuthentication.createUserAuthentication(userId);
-        String accessToken = jwtTokenProvider.issueAccessToken(userAuthentication);
-        return RefreshAccessTokenResponse.of(accessToken);
+        return jwtTokenProvider.issueAccessToken(userAuthentication);
+    }
+
+    private String generateRefreshTokenById(
+            final Long userId
+    ) {
+        UserAuthentication userAuthentication = UserAuthentication.createUserAuthentication(userId);
+        String refreshToken = jwtTokenProvider.issueRefreshToken(userAuthentication);
+        redisTokenService.saveRefreshToken(userId, refreshToken);
+        return refreshToken;
     }
 }
