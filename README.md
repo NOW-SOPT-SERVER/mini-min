@@ -31,3 +31,16 @@
 
 ## 4주차: AWS RDS, EC2, Nginx
 [✍🏻 키워드 과제 정리 Wiki 보러가기](https://github.com/NOW-SOPT-SERVER/mini-min/wiki/4%EC%B0%A8-%EC%84%B8%EB%AF%B8%EB%82%98-%7C-%ED%82%A4%EC%9B%8C%EB%93%9C-%EA%B3%BC%EC%A0%9C-%EC%A0%95%EB%A6%AC)
+
+<br>
+
+## 5주차: 합동 세미나
+[🧑🏻‍💻 합동 세미나 KREAM 레포 보러가기](https://github.com/NOW-SOPT-APP4-KREAM/KREAM-Server)  
+
+[🧑🏻‍💻 합동 세미나 KREAM Swagger 보러가기](http://13.54.157.89/swagger-ui/index.html#/)
+
+<br>
+
+## 6주차: AWS S3 Multipart 통신, 인증 인가
+[🧑🏻‍💻 실습 과제 구현 내용 정리 PR 보러가기](https://github.com/NOW-SOPT-SERVER/mini-min/pull/15)
+
