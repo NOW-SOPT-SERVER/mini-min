@@ -3,6 +3,7 @@ package org.sopt.demo.controller.member;
 import lombok.RequiredArgsConstructor;
 import org.sopt.demo.service.MemberService;
 import org.sopt.demo.service.dto.request.MemberCreateRequest;
+import org.sopt.demo.service.dto.response.RefreshAccessTokenResponse;
 import org.sopt.demo.service.dto.response.UserJoinResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,5 +49,13 @@ public class MemberController implements MemberControllerSwagger {
     ) {
         memberService.deleteMemberById(memberId);
         return ResponseEntity.noContent().build();
+    }
+
+    @Override
+    @GetMapping("/refresh-token")
+    public ResponseEntity<RefreshAccessTokenResponse> refreshAccessToken(
+            @RequestHeader String refreshToken
+    ) {
+        return ResponseEntity.ok(memberService.getAccessToken(refreshToken));
     }
 }

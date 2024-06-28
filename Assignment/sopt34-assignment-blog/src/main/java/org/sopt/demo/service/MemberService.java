@@ -2,6 +2,7 @@ package org.sopt.demo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.sopt.demo.auth.UserAuthentication;
+import org.sopt.demo.auth.redis.service.RedisTokenService;
 import org.sopt.demo.common.jwt.JwtTokenProvider;
 import org.sopt.demo.domain.Member;
 import org.sopt.demo.exception.ErrorMessage;
@@ -10,6 +11,7 @@ import org.sopt.demo.repository.MemberRepository;
 import org.sopt.demo.service.dto.response.AllMembersResponse;
 import org.sopt.demo.service.dto.request.MemberCreateRequest;
 import org.sopt.demo.service.dto.response.MemberFindResponse;
+import org.sopt.demo.service.dto.response.RefreshAccessTokenResponse;
 import org.sopt.demo.service.dto.response.UserJoinResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +22,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
     private final JwtTokenProvider jwtTokenProvider;
+    private final RedisTokenService redisTokenService;
 
     @Transactional
     public UserJoinResponse createMember(
@@ -29,10 +32,9 @@ public class MemberService {
                 Member.create(memberCreateRequest.name(), memberCreateRequest.part(), memberCreateRequest.age())
         );
         Long memberId = member.getId();
-        String accessToken = jwtTokenProvider.issueAccessToken(
-                UserAuthentication.createUserAuthentication(memberId)
-        );
-        return UserJoinResponse.of(accessToken, memberId.toString());
+        String accessToken = generateAccessTokenById(memberId);
+        String refreshToken = generateRefreshTokenById(memberId);
+        return UserJoinResponse.of(accessToken, refreshToken, memberId.toString());
     }
 
     public Member findById(
@@ -60,5 +62,28 @@ public class MemberService {
     ) {
         Member member = findById(memberId);
         memberRepository.delete(member);
+    }
+
+    public RefreshAccessTokenResponse getAccessToken(
+            final String refreshToken
+    ) {
+        Long userId = redisTokenService.findMemberIdByRefreshToken(refreshToken);
+        return RefreshAccessTokenResponse.of(generateAccessTokenById(userId));
+    }
+
+    private String generateAccessTokenById(
+            final Long userId
+    ) {
+        UserAuthentication userAuthentication = UserAuthentication.createUserAuthentication(userId);
+        return jwtTokenProvider.issueAccessToken(userAuthentication);
+    }
+
+    private String generateRefreshTokenById(
+            final Long userId
+    ) {
+        UserAuthentication userAuthentication = UserAuthentication.createUserAuthentication(userId);
+        String refreshToken = jwtTokenProvider.issueRefreshToken(userAuthentication);
+        redisTokenService.saveRefreshToken(userId, refreshToken);
+        return refreshToken;
     }
 }
